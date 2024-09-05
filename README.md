@@ -1,5 +1,3 @@
-# pupil
-project
 from tkinter import*
 import time
 from PIL import Image,ImageTk,ImageGrab
@@ -631,16 +629,24 @@ history.config(font=("Arial",18,"bold"))
 history.place(relx=0.83,rely=0.425)
 
 
-#menu
+def import_file():
+    v_file_path = filedialog.askopenfilename(title="Select a file",
+                                             filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+    if v_file_path:
+        # Process the selected file (you can replace this with your own logic)
+        print("Selected file:", v_file_path)
+
+
+# menu
 menu = Menu(win)
 
-menubar_1 = Menu(menu)                        # 建立第一個選單的子選單，有三個選項
-menubar_1.add_command(label="Open")              # 子選單第一個選項
-menubar_1.add_command(label="Save",command=export)              # 子選單第二個選項
-menubar_1.add_command(label="Exit")              # 子選單第三個選項
-menu.add_cascade(label='File', menu=menubar_1) 
+menubar_1 = Menu(menu)  # 建立第一個選單的子選單，有三個選項
+menubar_1.add_command(label="Open", command=import_file)  # 子選單第一個選項
+menubar_1.add_command(label="Save", command=export)  # 子選單第二個選項
+menubar_1.add_command(label="Exit", command=quit)  # 子選單第三個選項
+menu.add_cascade(label='File', menu=menubar_1)
 
-win.config(menu=menu)      
+win.config(menu=menu)
 
 
 #judgebox
